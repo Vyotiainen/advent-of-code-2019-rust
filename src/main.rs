@@ -35,12 +35,12 @@ fn get_mass_vec() -> Vec<i64>
     }
 }
 
+fn total_fuel_req(mass_vec:Vec<i64>) -> i64
+{
+    mass_vec.iter().fold(0, |acc, cur| { acc + (cur/3-2) })
+}
+
 fn main() {
     let mass_vec = get_mass_vec();
-
-    println!("{:?}", mass_vec);
-    /*match mass_vec {
-        Ok(v) => println!("{:?}", v),
-        Err(e) => println!("error occured, {:?}", e)
-    }*/
+    println!("{:?}", total_fuel_req(mass_vec));
 }
