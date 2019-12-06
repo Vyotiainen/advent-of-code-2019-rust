@@ -37,7 +37,19 @@ fn get_mass_vec() -> Vec<i64>
 
 fn total_fuel_req(mass_vec:Vec<i64>) -> i64
 {
-    mass_vec.iter().fold(0, |acc, cur| { acc + (cur/3-2) })
+    mass_vec.iter().fold(0, |acc, cur| {
+        acc + fuel_for_fuel(*cur)
+    })
+}
+
+fn fuel_for_fuel(mass:i64) -> i64
+{
+    let fuel:i64 = mass/3-2;
+    if fuel <= 0 {
+        0
+    } else {
+        fuel + fuel_for_fuel(fuel)
+    }
 }
 
 fn main() {
